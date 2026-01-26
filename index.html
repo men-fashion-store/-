@@ -9,13 +9,13 @@
     
     <style>
         :root {
-            --primary-olive: #4A5D44; /* الزيتي المطلوب */
-            --glass-white-border: rgba(255, 255, 255, 0.8); /* حواف بيضاء واضحة */
+            --primary-olive: #4A5D44; 
+            --glass-border: rgba(255, 255, 255, 0.6);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #dce3eb 0%, #bdc9d6 100%);
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
             margin: 0;
             padding: 0;
             display: flex;
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* خلفية الأحذية المستمرة */
+        /* خلفية الأحذية المستمرة - خليتها أوضح شوية عشان تبان من تحت الزجاج */
         #dynamic-bg {
             position: fixed;
             top: 0;
@@ -39,7 +39,7 @@
         .floating-shoe {
             position: absolute;
             color: var(--primary-olive);
-            opacity: 0.15;
+            opacity: 0.2; /* وضوح الأحذية في الخلفية */
             animation: move linear forwards;
         }
 
@@ -58,91 +58,88 @@
         }
 
         .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px auto;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px auto;
             border-radius: 50%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 4px solid #fff;
+            border: 3px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             overflow: hidden;
             background: #fff;
         }
 
-        .logo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .logo { width: 100%; height: 100%; object-fit: cover; }
 
         h1 {
             color: var(--primary-olive);
-            font-size: 2.3rem;
+            font-size: 2.1rem;
             font-weight: 900;
             margin: 0;
+            text-shadow: 0 2px 4px rgba(255,255,255,0.5);
         }
 
         .subtitle {
-            color: #666;
-            font-size: 0.9rem;
+            color: #555;
+            font-size: 0.85rem;
             margin-bottom: 35px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
-        /* تصميم الأزرار الزجاجي 3D */
+        /* أزرار زجاجية شفافة تماماً بنظام 3D */
         .link-btn {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            /* خلفية شفافة جداً للسماح برؤية ما خلفها */
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(8px); /* التغبيش اللي بيحسسك إنه قزاز */
+            -webkit-backdrop-filter: blur(8px);
             
-            /* اللون الزيتي للكلام */
             color: var(--primary-olive) !important;
-            
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            border-radius: 15px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             
-            /* الحواف البيضاء والـ 3D */
-            border-top: 2px solid var(--glass-white-border);
-            border-left: 2px solid var(--glass-white-border);
-            border-right: 1px solid rgba(255,255,255,0.2);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            /* حواف بيضاء رفيعة وبارزة (High-end Glass look) */
+            border-top: 1.5px solid rgba(255, 255, 255, 0.9);
+            border-left: 1.5px solid rgba(255, 255, 255, 0.9);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             
-            /* الظل اللي بيعمل تجسيم 3D */
+            /* ظل خارجي للبروز وظل داخلي للعمق */
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.05),
-                inset 0 0 15px rgba(255, 255, 255, 0.3);
+                0 10px 20px rgba(0, 0, 0, 0.08),
+                inset 0 0 10px rgba(255, 255, 255, 0.2);
             
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
         .link-btn:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px) scale(1.03);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
             border-top: 2px solid #fff;
             border-left: 2px solid #fff;
         }
 
         .link-btn i {
             position: absolute;
-            right: 20px;
-            font-size: 1.3rem;
-            color: var(--primary-olive);
+            right: 22px;
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
         .footer {
-            margin-top: 30px;
-            font-size: 0.85rem;
+            margin-top: 25px;
+            font-size: 0.8rem;
             color: var(--primary-olive);
             font-weight: 700;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -188,20 +185,20 @@
 
     <script>
         const bg = document.getElementById('dynamic-bg');
-        const icons = ['fa-shoe-prints', 'fa-boot', 'fa-socks'];
+        const icons = ['fa-shoe-prints', 'fa-boot', 'fa-socks', 'fa-shoe-flat'];
 
         function createIcon() {
             const icon = document.createElement('i');
             icon.className = `fas ${icons[Math.floor(Math.random()*icons.length)]} floating-shoe`;
             icon.style.left = Math.random() * 100 + 'vw';
-            icon.style.fontSize = Math.random() * 25 + 15 + 'px';
-            const duration = Math.random() * 6 + 4;
+            icon.style.fontSize = Math.random() * 20 + 20 + 'px';
+            const duration = Math.random() * 7 + 5;
             icon.style.animationDuration = duration + 's';
             bg.appendChild(icon);
             setTimeout(() => icon.remove(), duration * 1000);
         }
 
-        // مطر أحذية شغال علطول
+        // سرعة توليد الأحذية (كل نصف ثانية)
         setInterval(createIcon, 500);
     </script>
 </body>
