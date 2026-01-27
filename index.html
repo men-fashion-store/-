@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أحمد الشيخ للأحذية | Minimalist Premium</title>
+    <title>أحمد الشيخ للأحذية | Classic Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --primary-olive: #4A5D44; 
-            --glass-bg: rgba(255, 255, 255, 0.04); 
-            --text-silver: linear-gradient(to bottom, #ffffff 0%, #d1d1d1 100%);
+            --glass-white: rgba(255, 255, 255, 0.4); 
+            --soft-shadow: rgba(74, 93, 68, 0.15);
         }
 
         body {
@@ -23,33 +23,25 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-            background: #0b0f1a; 
+            /* خلفية فاتحة وكتاشي في نفس الوقت */
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
         }
 
-        .mesh-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0b0f1a 100%);
-            z-index: -2;
-        }
-
+        /* هالات ضوئية زيتية خفيفة جداً لزوم الرقي */
         .aura {
             position: fixed;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(100px);
             z-index: -1;
-            opacity: 0.35;
+            opacity: 0.2;
             animation: auraMove 15s infinite alternate;
         }
-        .aura-1 { width: 500px; height: 500px; background: var(--primary-olive); top: -15%; right: -10%; }
-        .aura-2 { width: 400px; height: 400px; background: #2563eb; bottom: -10%; left: -10%; animation-duration: 20s; }
+        .aura-1 { width: 400px; height: 400px; background: var(--primary-olive); top: -10%; right: -10%; }
+        .aura-2 { width: 300px; height: 300px; background: #fff; bottom: -5%; left: -5%; }
 
         @keyframes auraMove {
             from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(60px, 100px) scale(1.1); }
+            to { transform: translate(40px, 60px) scale(1.1); }
         }
 
         #dynamic-bg {
@@ -64,8 +56,8 @@
 
         .floating-shoe {
             position: absolute;
-            color: #fff;
-            opacity: 0.12;
+            color: var(--primary-olive);
+            opacity: 0.15;
             animation: move linear forwards;
         }
 
@@ -78,94 +70,83 @@
             width: 88%;
             max-width: 400px;
             text-align: center;
-            margin: 60px auto;
+            margin: 50px auto;
             position: relative;
             z-index: 10;
-            padding: 45px 20px;
-            background: rgba(255, 255, 255, 0.02); /* خلفية خفيفة جداً بدون إطار */
-            backdrop-filter: blur(30px) saturate(150%);
-            -webkit-backdrop-filter: blur(30px) saturate(150%);
-            border-radius: 50px;
-            /* استبدال الإطار بظل ناعم جداً لتمييز الحواف بصرياً فقط */
-            box-shadow: 0 50px 100px rgba(0,0,0,0.6);
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.3); /* شفافة بدون إطار */
+            backdrop-filter: blur(25px) saturate(120%);
+            -webkit-backdrop-filter: blur(25px) saturate(120%);
+            border-radius: 40px;
+            border: none; /* بدون إطار زجاجي */
+            box-shadow: 0 30px 60px var(--soft-shadow);
         }
 
         .logo-container {
-            width: 125px;
-            height: 125px;
-            margin: 0 auto 30px auto;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px auto;
             border-radius: 50%;
             overflow: hidden;
             background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 4px solid #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
         .logo { width: 100%; height: 100%; object-fit: cover; }
 
         h1 {
-            background: var(--text-silver);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.7rem;
+            color: var(--primary-olive);
+            font-size: 2.5rem;
             font-weight: 900;
             margin: 0;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .subtitle {
-            color: rgba(255, 255, 255, 0.5);
+            color: #6b7280;
             font-size: 0.85rem;
-            margin-bottom: 50px;
-            font-weight: 600;
-            letter-spacing: 4px;
+            margin-bottom: 45px;
+            font-weight: 700;
+            letter-spacing: 3px;
         }
 
-        /* أزرار بدون إطار (Borderless) */
+        /* أزرار بدون إطار باللون الزيتي */
         .link-btn {
-            background: rgba(255, 255, 255, 0.06); /* زيادة الشفافية */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            color: #fff !important;
+            background: var(--glass-white); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--primary-olive) !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 22px;
-            margin-bottom: 20px;
-            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: 20px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.15rem;
+            font-weight: 800;
+            font-size: 1.1rem;
             position: relative;
             overflow: hidden;
-            /* تم إزالة جميع الـ Borders */
-            border: none; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+            border: none; /* بدون إطار */
+            box-shadow: 0 10px 25px var(--soft-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-style: preserve-3d;
         }
 
-        .link-btn::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-            opacity: 0.04;
-            pointer-events: none;
-        }
-
         .link-btn:hover {
-            transform: translateY(-10px) scale(1.04);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px) rotateX(10deg) scale(1.03);
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px var(--soft-shadow);
         }
 
-        /* تأثير اللمعة عند الـ Hover */
+        /* لمعة بيضاء خفيفة عند المرور */
         .link-btn::after {
             content: '';
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transition: 0.6s;
         }
         .link-btn:hover::after { left: 100%; }
@@ -173,21 +154,20 @@
         .link-btn i {
             position: absolute;
             right: 25px;
-            font-size: 1.4rem;
-            opacity: 0.8;
+            font-size: 1.3rem;
         }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 35px;
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.3);
-            font-weight: 600;
+            color: var(--primary-olive);
+            font-weight: 700;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <div class="mesh-bg"></div>
     <div class="aura aura-1"></div>
     <div class="aura aura-2"></div>
     <div id="dynamic-bg"></div>
@@ -236,9 +216,12 @@
             const icon = document.createElement('i');
             icon.className = `fas ${icons[Math.floor(Math.random()*icons.length)]} floating-shoe`;
             icon.style.left = Math.random() * 100 + 'vw';
-            icon.style.fontSize = Math.random() * 25 + 15 + 'px';
-            const duration = Math.random() * 2 + 3;
+            icon.style.fontSize = Math.random() * 20 + 20 + 'px';
+            
+            // النزول السريع (2-4 ثواني)
+            const duration = Math.random() * 2 + 2;
             icon.style.animationDuration = duration + 's';
+            
             bg.appendChild(icon);
             setTimeout(() => icon.remove(), duration * 1000);
         }
