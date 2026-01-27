@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أحمد الشيخ للأحذية</title>
+    <title>أحمد الشيخ للأحذية | Premium Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --primary-olive: #4A5D44; 
-            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-bg: rgba(255, 255, 255, 0.03); /* شفافية فائقة */
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-silver: linear-gradient(to bottom, #ffffff 0%, #b5b5b5 100%);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
             margin: 0;
             padding: 0;
             display: flex;
@@ -23,9 +24,37 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
+            background: #0f172a; /* خلفية داكنة لإبراز تأثيرات الضوء */
         }
 
-        /* خلفية الأحذية المستمرة - خليتها أوضح شوية عشان تبان من تحت الزجاج */
+        /* خلفية الـ Mesh Gradient المتحركة */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #0f172a 100%);
+            z-index: -2;
+        }
+
+        /* دوائر الضوء (Aura Glows) للرقي */
+        .aura {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: auraMove 15s infinite alternate;
+        }
+        .aura-1 { width: 400px; height: 400px; background: var(--primary-olive); top: -10%; right: -10%; }
+        .aura-2 { width: 350px; height: 350px; background: #3b82f6; bottom: -5%; left: -5%; animation-duration: 20s; }
+
+        @keyframes auraMove {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(50px, 80px) scale(1.2); }
+        }
+
         #dynamic-bg {
             position: fixed;
             top: 0;
@@ -38,113 +67,139 @@
 
         .floating-shoe {
             position: absolute;
-            color: var(--primary-olive);
-            opacity: 0.2; /* وضوح الأحذية في الخلفية */
+            color: #fff;
+            opacity: 0.15;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
             animation: move linear forwards;
         }
 
         @keyframes move {
-            from { transform: translateY(-10vh) rotate(0deg); }
-            to { transform: translateY(110vh) rotate(360deg); }
+            from { transform: translateY(-15vh) rotate(0deg); }
+            to { transform: translateY(115vh) rotate(720deg); }
         }
 
         .container {
             width: 85%;
-            max-width: 380px;
+            max-width: 400px;
             text-align: center;
-            margin: 50px auto;
+            margin: 60px auto;
             position: relative;
             z-index: 10;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
         }
 
         .logo-container {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 20px auto;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px auto;
             border-radius: 50%;
-            border: 3px solid #fff;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 0 30px rgba(255,255,255,0.1);
             overflow: hidden;
             background: #fff;
+            transform: translateZ(50px);
         }
 
         .logo { width: 100%; height: 100%; object-fit: cover; }
 
         h1 {
-            color: var(--primary-olive);
-            font-size: 2.1rem;
+            background: var(--text-silver);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.6rem;
             font-weight: 900;
             margin: 0;
-            text-shadow: 0 2px 4px rgba(255,255,255,0.5);
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
         }
 
         .subtitle {
-            color: #555;
-            font-size: 0.85rem;
-            margin-bottom: 35px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 45px;
+            font-weight: 600;
+            letter-spacing: 3px;
         }
 
-        /* أزرار زجاجية شفافة تماماً بنظام 3D */
+        /* أزرار 3D شفافة مع ملمس Noise */
         .link-btn {
-            /* خلفية شفافة جداً للسماح برؤية ما خلفها */
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(8px); /* التغبيش اللي بيحسسك إنه قزاز */
-            -webkit-backdrop-filter: blur(8px);
-            
-            color: var(--primary-olive) !important;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: #fff !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 18px 20px;
-            margin-bottom: 18px;
-            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 22px;
+            border-radius: 20px;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 1.05rem;
-            
-            /* حواف بيضاء رفيعة وبارزة (High-end Glass look) */
-            border-top: 1.5px solid rgba(255, 255, 255, 0.9);
-            border-left: 1.5px solid rgba(255, 255, 255, 0.9);
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            
-            /* ظل خارجي للبروز وظل داخلي للعمق */
-            box-shadow: 
-                0 10px 20px rgba(0, 0, 0, 0.08),
-                inset 0 0 10px rgba(255, 255, 255, 0.2);
-            
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 700;
+            font-size: 1.1rem;
             position: relative;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-left: 1.5px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        /* ملمس محبب (Noise) للأزرار */
+        .link-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* تأثير اللمعة (Shine) */
+        .link-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
         }
 
         .link-btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-            border-top: 2px solid #fff;
-            border-left: 2px solid #fff;
+            transform: translateY(-8px) rotateX(10deg) scale(1.03);
+            background: rgba(255, 255, 255, 0.1);
+            border-top-color: #fff;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
+
+        .link-btn:hover::after { left: 100%; }
 
         .link-btn i {
             position: absolute;
-            right: 22px;
-            font-size: 1.2rem;
-            opacity: 0.9;
+            right: 25px;
+            font-size: 1.3rem;
+            transform: translateZ(20px);
         }
 
         .footer {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: var(--primary-olive);
-            font-weight: 700;
-            opacity: 0.8;
+            margin-top: 35px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 
+    <div class="mesh-bg"></div>
+    <div class="aura aura-1"></div>
+    <div class="aura aura-2"></div>
     <div id="dynamic-bg"></div>
 
     <div class="container">
@@ -192,14 +247,17 @@
             icon.className = `fas ${icons[Math.floor(Math.random()*icons.length)]} floating-shoe`;
             icon.style.left = Math.random() * 100 + 'vw';
             icon.style.fontSize = Math.random() * 20 + 20 + 'px';
-            const duration = Math.random() * 7 + 5;
+            
+            // سرعة نزول كبيرة جداً (بين 2 إلى 4 ثواني)
+            const duration = Math.random() * 2 + 2;
             icon.style.animationDuration = duration + 's';
+            
             bg.appendChild(icon);
             setTimeout(() => icon.remove(), duration * 1000);
         }
 
-        // سرعة توليد الأحذية (كل نصف ثانية)
-        setInterval(createIcon, 500);
+        // توليد أيقونات بشكل مستمر وسريع جداً
+        setInterval(createIcon, 350);
     </script>
 </body>
 </html>
